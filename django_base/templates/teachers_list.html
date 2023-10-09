@@ -1,0 +1,6 @@
+{% for object in objects %}
+    <p><strong>ID:</strong> {{ object.id }}</p>
+	<p><strong>ПІБ:</strong> {{ object.name }}</p>
+    <p><strong>Дата народження:</strong> {{ object.birth_date }}</p>
+    <p><strong>Предмети:</strong> {{ object.subjects }}</p><br>
+{% endfor %}
