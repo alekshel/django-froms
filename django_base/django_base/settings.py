@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "fontawesomefree",
+    "students.apps.StudentsConfig",
     "teachers.apps.TeachersConfig",
     "groups.apps.GroupsConfig",
     "django.contrib.admin",
