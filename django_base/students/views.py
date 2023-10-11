@@ -13,7 +13,7 @@ def student_form(request):
     form = StudentForm(request.POST)
     if form.is_valid():
         instance = form.save()
-        for group in form.cleaned_data['groups']:
+        for group in form.cleaned_data["groups"]:
             instance.groups.add(group)
 
     return redirect(reverse("student_list"))
@@ -30,7 +30,7 @@ def student_edit(request, pk):
         instance = form.save()
         instance.groups.clear()
 
-        for group in form.cleaned_data['groups']:
+        for group in form.cleaned_data["groups"]:
             instance.groups.add(group)
 
         return redirect(reverse("student_list"))

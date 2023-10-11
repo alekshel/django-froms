@@ -1,19 +1,14 @@
 from django import forms
 
 from .models import Student
-from groups.models import Group
 
 
 class StudentForm(forms.ModelForm):
-    # groups = forms.ModelMultipleChoiceField(
-    #     queryset=Group.objects.all(), required=False, widget=forms.CheckboxSelectMultiple
-    # )
-
     class Meta:
         model = Student
         fields = ["first_name", "year", "groups"]
         widgets = {
-            'groups': forms.CheckboxSelectMultiple,
+            "groups": forms.CheckboxSelectMultiple,
         }
 
     def clean_first_name(self):
