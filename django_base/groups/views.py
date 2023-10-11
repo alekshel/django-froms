@@ -11,7 +11,25 @@ def group_form(request):
 
     form = GroupForm(request.POST)
     if form.is_valid():
-        form.save()
+        instance = form.save()
+        for student in form.cleaned_data["students"]:
+            instance.students.add(student)
+        return redirect("groups_list")
+
+    return render(request, "group_form.html", {"form": form})
+
+
+def group_edit(request, pk):
+    group = Group.objects.get(pk=pk)
+    if request.method == "GET":
+        form = GroupForm(instance=group)
+        return render(request, "group_form.html", {"form": form})
+
+    form = GroupForm(request.POST, instance=group)
+    if form.is_valid():
+        instance = form.save()
+        for student in form.cleaned_data["students"]:
+            instance.students.add(student)
         return redirect("groups_list")
 
     return render(request, "group_form.html", {"form": form})

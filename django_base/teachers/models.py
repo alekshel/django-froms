@@ -12,7 +12,7 @@ class Teacher(models.Model):
     name = models.CharField("ПІБ", max_length=255, default="")
     birth_date = models.DateField("Дата народження", default="")
     subjects = models.ForeignKey(
-        Subject, verbose_name="Предмети", on_delete=models.PROTECT
+        Subject, verbose_name="Предмети", on_delete=models.SET_NULL, null=True
     )
 
     def __str__(self):
