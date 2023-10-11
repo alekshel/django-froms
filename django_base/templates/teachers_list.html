@@ -1,6 +1,45 @@
-{% for object in objects %}
-    <p><strong>ID:</strong> {{ object.id }}</p>
-	<p><strong>ПІБ:</strong> {{ object.name }}</p>
-    <p><strong>Дата народження:</strong> {{ object.birth_date }}</p>
-    <p><strong>Предмети:</strong> {{ object.subjects }}</p><br>
-{% endfor %}
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ПІБ</th>
+                <th>Дата народження</th>
+                <th>Предмети</th>
+                <th>Функції</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+                <tr>
+                    <td>{{ teacher.id }}</td>
+                    <td>
+                        <a href="{% url 'teacher_edit' pk=teacher.id %}">
+                            {{ teacher.name }}
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </td>
+                    <td>{{ teacher.birth_date }}</td>
+                    <td>
+                        <span class="tag">{{ teacher.subjects }}</span>
+                    </td>
+                    <td>
+                        <a href="{% url 'teacher_delete' pk=teacher.id %}">
+                            Видалити
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+    <a href="{% url 'teacher_form' %}" class="tag">
+        Додати вчителя
+    </a>
+{% endblock %}
+
