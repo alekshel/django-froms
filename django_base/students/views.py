@@ -15,8 +15,9 @@ def student_form(request):
         instance = form.save()
         for group in form.cleaned_data["groups"]:
             instance.groups.add(group)
+        return redirect(reverse("student_list"))
 
-    return redirect(reverse("student_list"))
+    return render(request, "student_form.html", {"form": form})
 
 
 def student_edit(request, pk):

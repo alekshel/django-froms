@@ -1,0 +1,4 @@
+path: /students/, method: GET, execution_time: 0.022047758102416992
+path: /student/, method: GET, execution_time: 0.02016282081604004
+path: /student/, method: POST, execution_time: 0.019517183303833008
+path: /students/, method: GET, execution_time: 0.006999969482421875
