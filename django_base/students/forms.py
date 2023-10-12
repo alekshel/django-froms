@@ -34,4 +34,6 @@ class StudentForm(forms.ModelForm):
         except phonenumbers.NumberParseException as e:
             raise forms.ValidationError(e.args[0])
 
-        return phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+        return phonenumbers.format_number(
+            parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL
+        )

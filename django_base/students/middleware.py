@@ -11,7 +11,13 @@ class LogMiddleware:
         response = self.get_response(request)
 
         execution_time = time.time() - start_time
-        with open(f"{Path(__file__).resolve().parent.parent.parent}/log.txt", 'a', encoding='utf-8') as txt_file:
-            txt_file.write(f"path: {request.path}, method: {request.method}, execution_time: {execution_time}\n")
+        with open(
+            f"{Path(__file__).resolve().parent.parent.parent}/log.txt",
+            "a",
+            encoding="utf-8",
+        ) as txt_file:
+            txt_file.write(
+                f"path: {request.path}, method: {request.method}, execution_time: {execution_time}\n"
+            )
 
         return response
